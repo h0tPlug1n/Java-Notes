@@ -391,24 +391,24 @@ class Books{
 > **Defining methods of similar names in different classes**
 >> Rules [Click to view](https://www.geeksforgeeks.org/overriding-in-java/)
 ```java
-class Anushka{
+class Cow{
 	public callsLike(){
-		System.out.println("Hello Sabu");
+		System.out.println("Moo-Moo");
 	}
 }
 
-class Indranil{
+class Cat{
 	public callsLike(){
-		System.out.println("Oi Sobbo");
+		System.out.println("Meow-Meow");
 	}
 }
 
 class Main{
 	public static void main(String[] args){
-		Anushka a = new Anushka();
-		Indranil i = new Indranil();
-		a.callsLike(); // Output: Hello Sabu
-		i.callsLike();  // Output: Oi Sobbo
+		Cow mycow = new Cow();
+		Cat mycat = new Cat();
+		mycow.callsLike(); // Output: Moo-Moo
+		mycat.callsLike();  // Output: Meow-Meow
 	}
 }
 ```
