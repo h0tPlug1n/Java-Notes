@@ -305,8 +305,8 @@ class Person{
 ```
 
 # Java `Classes & Constructors`
-> **Classes are blueprints that defines a variable**
-> **Objects are special methods which initializes objects of a class**
+- **Classes are blueprints that defines a variable**
+- **Objects are special methods which initializes objects of a class**
 ```java
 class Person{
 	int nHands;
@@ -327,8 +327,8 @@ class Person{
 ```
 
 # Java `Objects & Methods`
-> **Method is a function defined inside a class**
-> **Objects are instances of classes**
+- **Method is a function defined inside a class**
+- **Objects are instances of classes**
 ```java
 class Person{
 	int nHands;
@@ -361,11 +361,11 @@ class Main{
 ```
 
 # Java `Function/Method Overloading`
-> **Defining methods of similar names inside of a same class**
->> Rules
->>1.  Change the number of parameters in both the methods
->>2.  Change the datatype of the parameters of both the methods
->>3.  Change the order of the parameters of both the methods
+- **Defining methods of similar names inside of a same class**
+- Rules
+	- 1.  Change the number of parameters in both the methods
+	- 2.  Change the datatype of the parameters of both the methods
+	- 3.  Change the order of the parameters of both the methods
 
 ```java
 class Books{
@@ -388,27 +388,27 @@ class Books{
 ```
 
 # Java `Function/Method Overriding`
-> **Defining methods of similar names in different classes**
->> Rules [Click to view](https://www.geeksforgeeks.org/overriding-in-java/)
+- **Defining methods of similar names in different classes**
+- Rules [Click to view](https://www.geeksforgeeks.org/overriding-in-java/)
 ```java
-class Cow{
+class Anushka{
 	public callsLike(){
-		System.out.println("Moo-Moo");
+		System.out.println("Hello Sabu");
 	}
 }
 
-class Cat{
+class Indranil{
 	public callsLike(){
-		System.out.println("Meow-Meow");
+		System.out.println("Oi Sobbo");
 	}
 }
 
 class Main{
 	public static void main(String[] args){
-		Cow mycow = new Cow();
-		Cat mycat = new Cat();
-		mycow.callsLike(); // Output: Moo-Moo
-		mycat.callsLike();  // Output: Meow-Meow
+		Anushka a = new Anushka();
+		Indranil i = new Indranil();
+		a.callsLike(); // Output: Hello Sabu
+		i.callsLike();  // Output: Oi Sobbo
 	}
 }
 ```
@@ -502,9 +502,9 @@ class Main{
 ```
 
 # Java `Abstraction using Abstract class & methods`
->**Abstraction is the process of hiding sensitive details and onlyh showing required data to the users**
-> **Abstract Method** : Methods that are declared only in a class and has to define it in its child class.
-> **Abstract class** : A class where exists abstract methods and that class restricts making its objects.
+- **Abstraction is the process of hiding sensitive details and only showing required data to the users**
+-  **Abstract Method** : Methods that are declared only in a class and has to define it in its child class.
+-  **Abstract class** : A class where exists abstract methods and that class restricts making its objects.
 ```java
 abstract class Parent{
 	int x,y;
@@ -524,8 +524,8 @@ class Main{
 ```
 
 # Java `Final class & Methods`
-> **Final Method** : A method that cannot be redefined in any of its child class
-> **Final Class** : A class that cannot have its own child class.
+- **Final Method** : A method that cannot be redefined in any of its child class
+- **Final Class** : A class that cannot have its own child class.
 ```java
 final class sterileParent{
 	String getData(){
@@ -548,15 +548,15 @@ class Main{
 
 For Class      
 ---
-**Public** : The class is accessible for any other class
-**default** : The class is only accessible by the classes present in the same package
+- **Public** : The class is accessible for any other class
+- **default** : The class is only accessible by the classes present in the same package
 
 For Methods 
 ---
-**Public** : The code is accessible for all classes
-**Protected** : The code is accessible in the same packages and child classes
-**Private** : The code is only available within the declared class
-**Default** : The code is accessible in the same package
+- **Public** : The code is accessible for all classes
+- **Protected** : The code is accessible in the same packages and child classes
+- **Private** : The code is only available within the declared class
+- **Default** : The code is accessible in the same package
 
 # Java `static method`
 **It means that a static method can be called without even creating an object of the class**
@@ -704,4 +704,279 @@ class Main{
 		mydemo.myFucntion2(); // This is a function for second interface
 	}
 }
+```
+# Java `Threads`
+- Threads: Subprogram of an entire program is called Thread
+- Suppose there are 2 different functions in a Java code. Each function denotes a thread whereas the entire java code denotes a program.
+- There are 2 ways to implement threading:
+	- Using Thread Class
+	- Using Runnable Interface
+
+```java
+// Implementing Threads using Thread class
+import java.lang.Thread; // importing Thread class
+
+class A extends Thread{
+	public void run(){ // Defining a thread in run method
+		System.out.println("This is a task inside class A");
+	}
+}
+
+class Main{
+	public static void main(String[] args){
+		A a = new A();
+		a.start(); // executing the thread using start method which will invoke the run method
+	}
+}
+```
+```java
+// Implementing Threads using Runnable Interface
+import java.lang.Thread;
+class A implements Runnable{ // using runnable interface
+	public void run(){ // the run method to construct a thread
+		System.out.println("This is a task inside class A");	
+	}
+}
+
+class Main{
+	public static void main(String[] args){
+		A a = new A(); // creating an object of class A
+		Thread t = new Thread(a); // creating a new thread and passing object a
+		t.start(); // executing the start method
+	}
+}
+```
+
+# Java `Multithreading`
+```java
+import java.lang.Thread;
+class A extends Thread{
+	public void run(){
+		for(int i=0; i<11; i++){
+			System.out.println("A: #"+i);
+		}
+	}
+}
+class B extends Thread{
+	public void run(){
+		for(int i=0; i<11; i++){
+			System.out.println("B: #"+i);
+		}
+	}
+}
+class Main{
+	public static void main(String[] args){
+		A a = new A();
+		B b = new B();
+		a.start();
+		b.start();
+	}
+}
+```
+```java
+import java.lang.Thread;
+class A implements Runnable{
+	public void run(){
+		for(int i=0; i<11; i++){
+			System.out.println("A: #"+i);
+		}
+	}
+}
+class B implements Runnable{
+	public void run(){
+		for(int i=0; i<11; i++){
+			System.out.println("B: #"+i);
+		}
+	}
+}
+class Main{
+	public static void main(String[] args){
+		A a = new A();
+		B b = new B();
+		Thread t1 = new Thread(a);
+		Thread t2 = new Thread(b);
+		t1.start();
+		t2.start();
+	}
+}
+```
+
+# Java `Thread Methods`
+- start() - It is used to start the execution of the thread.
+- run() - the body of the thread is defined here. It is used to do an action for a thread.
+- sleep() - It sleeps a thread for the specified amount of time.
+- join() - it waits for a thread to die
+- getPriority() - it returns the priority of the thread
+- setPriority() - it sets the priority of the thread
+- getName() - it returns the name of the thread
+- setName() - it sets the name of the thread
+- yield() - It causes the currently executing thread object to pause and allow other threads to execute temporarily.
+- isAlive() - it tests whether the thread is alive or not
+- resume() - it is used to resume the suspended thread
+- stop() - it is used to stop the thread
+- destroy() - it is used to destroy the thread groups and all its subgroups
+- getState() - it is used to return the state of the thread
+
+# Java `Thread LifeCycle`
+!(https://www.scientecheasy.com/wp-content/uploads/2020/06/thread-life-cycle.png)
+
+# Java `Static & Non-static Block`
+- Static block - a block is created with a static keyword. it runs before the main() method.
+- Non-static block - when a block is created without using the static keyword. It runs whenever an object is created of that class.
+```java
+class Main{
+	static{
+		System.out.println("Inside Static block");
+	}
+	public static void main(String[] args){
+		System.out.println("Inside Main");
+	}
+}
+
+/*
+Output:
+
+Inside Static block
+Inside Main
+
+*/
+```
+# Java Theory Questions
+---
+```md
+
+- Class - Blueprint of an object
+- Object - Instance of a class
+
+- Constructor - A special method that is used in initialize an object.
+- Parameterized constructor - A constructor which accepts parameters to initialize an object
+- Non-parameterized constructor - A constructor which does not accept parameters to initialize an object
+- Default constructors - Constructors that are defined beforehand and does not need any explicit definition
+
+- Method - Function inside a class
+- Method overloading - defining same methods in same class
+- Method overriding - defining same methods in child class
+- Method declaration - Only telling the compiler about the method name, parameter etc.
+- Method definition - The body of the method where exists the task it needs to perform
+
+- Constructor Overloading - Writing more than 1 constructor in a class with a unique set of arguments
+
+- Inheritance - The property to inherit the attributes & methods from another class into its child class
+- Polymorphism - Using same mathods for different task execution. It uses the concept of method overriding
+- Abstraction - The process of hiding sensitive details and showing only the required data to the user
+- Encapsulation - The process to make sure that the sensitive data is hidden.
+
+- Abstract classes - Classes that restricts creation of its objects and also contains abstract methods
+- Abstract methods - Method declared in a class and need to define in its child class
+
+- Final class - A class which cannot have its child class
+- Final methods - A method which cannot be overriden or redefined in its child class
+- Final variable - A variable whose value cannot be changed throughout the code.
+
+- Static methods - A method which can be called from a different class without creating the object of the class where the method is defined.
+- Static variables - It is a kind of global variable which is shared among all instances of the class.
+
+- Interfaces - Special type of class which is used to acheive abstraction
+
+- Access Modifiers - Special keywords that can be used to control the visibility of the fields, methods, classes etc.
+
+- Public class - The class is accessible for any other class
+- Public methods - The method is accessible for all classes
+
+- Default Class - The class is only accessible to the classes present in the same package
+- Default Methods - The method is accessible in the same package
+
+- Protected Methods - The method is accessible in the same package and child classes
+- Private Methods - The method is only available in the declared class
+
+- Threads - Subprogram of a program
+- Multithreading - Executing multiple threads parallely
+
+Ways to implement Threads : 
+---
+1. Extending Thread class
+2. Implementing Runnable Interface
+
+Types of Inheritance : 
+---
+1. Single Level (Single parent having single child)
+2. Multi level (Grandparent to parent to child)
+3. Multiple (Multiple parent having same child)
+4. Hybrid (Single parent having multiple children and those multiple children has a same child of themselves)
+5. Hierarchical (Single parent having multiple child)
+
+Points on implementing Thread using Thread class:
+-------------------------------------------------
+1. The class should extend the Thread class which is present in java.lang.Thread
+2. The body of the thread needs to be present inside run() method which needs to be overriden
+3. To start executing the thread, the thread child class object must call the start() method
+
+Points on implementing Thread using Runnable interface:
+-------------------------------------------------------
+1. The class should implement the Runnable Interface which is present in java.lang.Runnable
+2. The body of the thread needs to be present inside run() method which needs to be defined
+1. The thread can be run by passing an instance of the class to a Thread object's constructor and then calling the thread's start() method
+
+**Note:** The major difference is that when a class extends the Thread class, you cannot extend any other class, but by implementing the Runnable interface, it is possible to extend from another class as well
+
+Thread Methods:
+----------------
+- start() - It is used to start the execution of the thread.
+- run() - the body of the thread is defined here. It is used to do an action for a thread.
+- sleep() - It sleeps a thread for the specified amount of time.
+- join() - it waits for a thread to die
+- getPriority() - it returns the priority of the thread
+- setPriority() - it sets the priority of the thread
+- getName() - it returns the name of the thread
+- setName() - it sets the name of the thread
+- yield() - It causes the currently executing thread object to pause and allow other threads to execute temporarily.
+- isAlive() - it tests whether the thread is alive or not
+- resume() - it is used to resume the suspended thread
+- stop() - it is used to stop the thread
+- destroy() - it is used to destroy the thread groups and all its subgroups
+- getState() - it is used to return the state of the thread
+
+Lifecycle of Thread:
+--------------------
+1. New - Whenever a new thread is created, it is always in the new state. For a thread in the new state, the code has not been run yet and thus has not begun its execution.
+
+2. Runnable - A thread, that is ready to run is then moved to the runnable state. In the runnable state, the thread may be running or may be ready to run at any given instant of time.
+
+3. Running - When the thread gets the CPU, it moves from the runnable to the running state.
+
+4. Blocked - Whenever a thread is inactive for a span of time (not permanently) then, either the thread is in the blocked state or is in the waiting state.
+
+Refer this - https://www.scientecheasy.com/wp-content/uploads/2020/06/thread-life-cycle.png
+- Green boxes - States
+- Arrows - from where to where
+- methods - indicating which method is required to go to which state
+
+- Static block - a block is created with a static keyword. it runs before the main() method.
+- Non-static block - when a block is created without using the static keyword. It runs whenever an object is created of that class.
+
+Types of error -
+---
+1. Runtime error
+2. Compile time error
+
+- Exception - It is the error condition occured during the runtime of the program
+
+Steps of Exception Handling:
+---
+1. Hit
+2. Throw
+3. Catch
+4. Handle
+
+- Try block - This is where a piece of code is tried and if it throws an exception it is caught by catch block
+- Catch block - This block accepts a parameter and it catches the exception thrown by the exception handler
+- Finally block - The finally block in java is used to put important codes such as clean up code e.g. closing the file or closing the connection.
+
+- Applet - Applet is a special type of program that is embedded in the webpage to generate the dynamic content. It runs inside the browser and works at client side.
+
+Running an applet : 
+---
+1. By HTML
+2. By AppletViewer Tool
+
 ```
