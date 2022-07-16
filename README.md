@@ -818,7 +818,7 @@ class Main{
 - getState() - it is used to return the state of the thread
 
 # Java `Thread LifeCycle`
-!(https://www.scientecheasy.com/wp-content/uploads/2020/06/thread-life-cycle.png)
+![](https://www.scientecheasy.com/wp-content/uploads/2020/06/thread-life-cycle.png)
 
 # Java `Static & Non-static Block`
 - Static block - a block is created with a static keyword. it runs before the main() method.
