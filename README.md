@@ -843,7 +843,6 @@ Inside Main
 ```
 # Java Theory Questions
 ---
-```md
 
 - Class - Blueprint of an object
 - Object - Instance of a class
@@ -978,5 +977,3 @@ Running an applet :
 ---
 1. By HTML
 2. By AppletViewer Tool
-
-```
